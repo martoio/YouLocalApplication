@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@drawable/dialog_shape"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/img_user_profile_top_background"
+            android:scaleType="centerCrop"/>
+
+        <com.martoio.android.youlocalapplication.CircularImageView
+            android:id="@+id/avatar"
+            android:layout_height="200dp"
+            android:layout_width="200dp"
+            app:civ_border_color="#EEEEEE"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="10"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <!--
+    <ImageView
+        android:id="@+id/user_dialog_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:paddingTop="60dp"
+        android:background="@drawable/img_user_profile_top_background"/>
+-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:id="@+id/username"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="28dp"
+        android:textSize="32dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollViewAbout"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scrollview_test"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:lineSpacingMultiplier="0.8"
+            android:gravity="center"
+            android:id="@+id/about_user"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"/>
+    </ScrollView>
+
+</LinearLayout>
