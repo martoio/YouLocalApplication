@@ -40,6 +40,7 @@ public class YouLocalFragment extends Fragment {
     private static final String STARTED_KEY = "STARTED";
     private static final String YOULOCAL_DIALOG = "Dialog";
     private boolean mStarted = false;
+    private boolean validEmail, validPassword;
     private int mTextIndex = 0;
     private String[] mForgottenText = {"Forgotten Password?", "Back to Login"};
     private int mPassHeight;
@@ -51,7 +52,6 @@ public class YouLocalFragment extends Fragment {
     private LinearLayout mLoginBody;
     private TextSwitcher mSwitcher;
     private Button mLogin;
-    private boolean valid;
     private ProgressDialog mProgress;
     private ImageView mLogo;
 
@@ -88,7 +88,7 @@ public class YouLocalFragment extends Fragment {
                 validatePasswordLogin();
                 validateEmailLogin();
 
-                if (valid && mTextIndex == 0) { //only run the Login if the fields are valid and the Login button is in the "Login" state
+                if (validEmail && validPassword && mTextIndex == 0) { //only run the Login if the fields are valid and the Login button is in the "Login" state
                     //API CALL HERE;
                     new Login().execute(mEmail.getText().toString(), mPassword.getText().toString());
                 }
@@ -255,14 +255,14 @@ public class YouLocalFragment extends Fragment {
         String email = mEmail.getText().toString();
 
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            valid = false;
+            validEmail = false;
             mEmail.setError("Please enter a valid (non-empty) email");
         } else {
             mEmail.setError(null);
-            valid = true;
+            validEmail = true;
         }
 
-        return valid;
+        return validEmail;
 
     }
 
@@ -276,20 +276,20 @@ public class YouLocalFragment extends Fragment {
         String password = mPassword.getText().toString();
 
         if (password.isEmpty()) {
-            valid = false;
+            validPassword = false;
             mPassword.setError("Password field can't be blank");
         } else if (password.length() < 4 ){
-            valid = false;
+            validPassword = false;
             mPassword.setError("Must be more than 4 characters. Current: "+String.valueOf(password.length()));
         } else if (password.length() > 256){
-            valid = false;
+            validPassword = false;
             mPassword.setError("Must be less than 256 characters. Current: "+String.valueOf(password.length()));
         } else {
-            valid = true;
+            validPassword = true;
             mPassword.setError(null);
         }
 
-        return valid;
+        return validPassword;
     }
 
 
